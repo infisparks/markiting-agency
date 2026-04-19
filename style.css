@@ -2650,7 +2650,7 @@ form[data-parsley-validate] {
     text-align: left;
   }
   .card-toggle-check:checked ~ .card-header-v2 .hp--services__card-title {
-    font-size: 18px;
+    font-size: 20px;
     margin-top: 5px;
   }
   .card-toggle-check:checked ~ .card-footer-v2 .read-more-btn-v2 {
@@ -2663,12 +2663,12 @@ form[data-parsley-validate] {
   }
 
   .hp--services__card-desc {
-    font-size: 12px;
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.6;
     margin-bottom: 12px;
   }
   .hp--services__card-list li {
-    font-size: 11px;
+    font-size: 13px;
     margin-bottom: 6px;
   }
 }
@@ -2728,7 +2728,7 @@ form[data-parsley-validate] {
 
 /* Card Title */
 .hp--services__card-title {
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 700;
   color: #08235c;
   margin: 0 0 12px;
@@ -2737,7 +2737,7 @@ form[data-parsley-validate] {
 
 /* Card Description */
 .hp--services__card-desc {
-  font-size: 14px;
+  font-size: 16px;
   color: #64748B;
   line-height: 1.65;
   margin: 0 0 20px;
@@ -2756,7 +2756,7 @@ form[data-parsley-validate] {
 }
 
 .hp--services__card-list li {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   color: #475569;
   display: flex;
