@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <title>Blog | First Option Agency | Digital Marketing Insights</title>
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Read the latest insights and tips on digital marketing, web design, branding, and digital strategy from First Option Agency experts.">
+    <link rel="canonical" href="https://infispark.in/blog">
+    <meta property="og:url" content="https://infispark.in/blog">
+    <meta property="og:title" content="Blog | First Option Agency">
+    <meta property="og:description" content="Latest digital marketing and design insights from industry experts.">
+    <meta property="og:image" content="images/logo/logo.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="alternate" type="application/rss+xml" href="https://infispark.in/feed/blog">
+    <style>
+        .blog-hero {
+            background: linear-gradient(135deg, #0d2b4e 0%, #1a4d7a 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .blog-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .blog-hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .blog-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .search-bar {
+            margin-bottom: 50px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .search-btn {
+            padding: 12px 30px;
+            background: #0d2b4e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 50px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            border: 1px solid #ddd;
+            background: white;
+            color: #0d2b4e;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: #0d2b4e;
+            color: white;
+            border-color: #0d2b4e;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #091d3b, #0d2b4e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+            font-weight: 600;
+        }
+        
+        .blog-content {
+            padding: 25px;
+        }
+        
+        .blog-category {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #0d2b4e;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .blog-title {
+            font-size: 20px;
+            color: #0d2b4e;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        
+        .blog-excerpt {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #999;
+        }
+        
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .blog-link {
+            color: #0d2b4e;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        
+        .blog-link:hover {
+            text-decoration: underline;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+        }
+        
+        .pagination a,
+        .pagination button {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            background: white;
+            color: #0d2b4e;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover,
+        .pagination button:hover {
+            border-color: #0d2b4e;
+            background: #f5f5f5;
+        }
+        
+        .pagination a.active,
+        .pagination button.active {
+            background: #0d2b4e;
+            color: white;
+            border-color: #0d2b4e;
+        }
+        
+        .sidebar {
+            background: #f5f5f5;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .sidebar h3 {
+            font-size: 18px;
+            color: #0d2b4e;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .sidebar-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar-list li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .sidebar-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .sidebar-list a {
+            color: #0d2b4e;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+        
+        .sidebar-list a:hover {
+            color: #1a4d7a;
+        }
+        
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 32px;
+            }
+            
+            .search-bar {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <a href="index.html" class="logo">First Option Agency</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="blog-hero">
+            <h1>Our Blog</h1>
+            <p>Insights, tips, and strategies to help you succeed in digital marketing</p>
+        </section>
+
+        <!-- Blog Section -->
+        <section class="blog-section">
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search articles...">
+                <button class="search-btn">Search</button>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="filter-btn active">All Posts</button>
+                <button class="filter-btn">Digital Marketing</button>
+                <button class="filter-btn">Web Design</button>
+                <button class="filter-btn">Branding</button>
+                <button class="filter-btn">Strategy</button>
+                <button class="filter-btn">Social Media</button>
+            </div>
+
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">📱</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Digital Marketing</div>
+                        <h3 class="blog-title">The Future of AI in Digital Marketing</h3>
+                        <p class="blog-excerpt">Explore how artificial intelligence is transforming the way brands engage with customers and drive conversions.</p>
+                        <div class="blog-meta">
+                            <span class="blog-author">by Sarah Johnson</span>
+                            <span>Apr 15, 2026</span>
+                        </div>
+                        <a href="#" class="blog-link">Read Article →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🎨</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Web Design</div>
+                        <h3 class="blog-title">Web Design Trends for 2026</h3>
+                        <p class="blog-excerpt">Discover the latest design trends that are shaping user experiences and setting new standards for web design.</p>
+                        <div class="blog-meta">
+                            <span class="blog-author">by Michael Chen</span>
+                            <span>Apr 10, 2026</span>
+                        </div>
+                        <a href="#" class="blog-link">Read Article →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">📊</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Strategy</div>
+                        <h3 class="blog-title">Data-Driven Marketing: A Complete Guide</h3>
+                        <p class="blog-excerpt">Learn how to leverage data analytics to make informed marketing decisions and maximize your ROI.</p>
+                        <div class="blog-meta">
+                            <span class="blog-author">by James Wilson</span>
+                            <span>Apr 5, 2026</span>
+                        </div>
+                        <a href="#" class="blog-link">Read Article →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🎯</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Digital Marketing</div>
+                        <h3 class="blog-title">SEO Best Practices for 2026</h3>
+                        <p class="blog-excerpt">Stay ahead with the latest SEO strategies, algorithm updates, and optimization techniques for better rankings.</p>
+                        <div class="blog-meta">
+                            <span class="blog-author">by Emma Rodriguez</span>
+                            <span>Mar 30, 2026</span>
+                        </div>
+                        <a href="#" class="blog-link">Read Article →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">💡</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Branding</div>
+                        <h3 class="blog-title">Building a Strong Brand Identity</h3>
+                        <p class="blog-excerpt">A comprehensive guide to creating a unique brand identity that resonates with your target audience.</p>
+                        <div class="blog-meta">
+                            <span class="blog-author">by Sarah Johnson</span>
+                            <span>Mar 25, 2026</span>
+                        </div>
+                        <a href="#" class="blog-link">Read Article →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">📱</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Social Media</div>
+                        <h3 class="blog-title">Social Media Marketing Strategies That Work</h3>
+                        <p class="blog-excerpt">Proven strategies to grow your social media presence, increase engagement, and build community.</p>
+                        <div class="blog-meta">
+                            <span class="blog-author">by Michael Chen</span>
+                            <span>Mar 20, 2026</span>
+                        </div>
+                        <a href="#" class="blog-link">Read Article →</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="pagination">
+                <button class="active">1</button>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">Next →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 First Option Agency. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="#privacy-policy">Privacy Policy</a></li>
+                <li><a href="#terms-of-use">Terms of Service</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <link rel="preload" href="/fonts/Outfit-Regular.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="preload" href="/fonts/Outfit-Medium.woff2" as="font" type="font/woff2" crossorigin="">
+</body>
+
+</html>
