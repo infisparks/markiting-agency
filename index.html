@@ -1872,13 +1872,13 @@
                             <div class="holder d-flex fl-align-center">
                                 <div class="hp--navigation">
                                     <ul class="list menu d-flex fl-align-center js-menu-clone-template ">
-                                        <li class="link-holder"><a class="link" href="#site-wrapper"><strong>Home</strong></a></li>
-                                        <li class="link-holder"><a class="link" href="#about"><strong>About Us</strong></a></li>
-                                        <li class="link-holder">
-                                            <a class="link d-i-flex fl-align-center" href="services.html"><strong>Services</strong></a>
-                                        </li>
-                                        <li class="link-holder"><a class="link" href="#process"><strong>How It Works</strong></a></li>
-                                        <li class="link-holder"><a class="link" href="#industries"><strong>Industries</strong></a></li>
+                                        <li class="link-holder"><a class="link" href="index.html#site-wrapper">Home</a></li>
+                                        <li class="link-holder"><a class="link" href="index.html#about">About Us</a></li>
+                                        <!-- <li class="link-holder">
+                                            <a class="link d-i-flex fl-align-center" href="services.html">Services</a>
+                                        </li> -->
+                                        <li class="link-holder"><a class="link" href="index.html#process">How It Works</a></li>
+                                        <li class="link-holder"><a class="link" href="index.html#industries">Industries</a></li>
                                     </ul>
                                 </div>
                                 <div style="display:none">
@@ -3553,7 +3553,7 @@
                                             class="d-i-flex fl-center btn-fancy btn-fancy--indigo btn-fancy--sm btn-fancy--px-xl btn-fancy--text-md btn-fancy--gap-lg btn-fancy--medium btn-fancy--uppercase" style="text-decoration: none;">
                                             <span style="display: flex; align-items: center; gap: 10px;">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-                                                Chat on WhatsApp
+                                                 WhatsApp Us
                                             </span>
                                             <i class="fl-shrink d-i-flex">
                                                 <svg class="icon" width="10" height="18">
@@ -4548,18 +4548,56 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+        const burger = document.getElementById('burger');
+        const headerMenu = document.getElementById('headerMenu');
+        const siteHeader = document.getElementById('site-header');
+
+        // Mobile Menu Toggle
+        if (burger && headerMenu) {
+            burger.addEventListener('click', function () {
+                headerMenu.classList.toggle('is-active');
+                document.documentElement.classList.toggle('block-scroll');
+            });
+        }
+
+        // Header Scroll Effect (Already partially there, but ensuring it's robust)
+        if (siteHeader) {
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 10) {
+                    siteHeader.classList.add('scrolled');
+                } else {
+                    siteHeader.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Menu Cloning for Mobile
+        const template = document.querySelector('.js-menu-clone-template');
+        const target = document.querySelector('.js-menu-clone-target');
+        
+        if (template && target) {
+            const clone = template.cloneNode(true);
+            clone.classList.remove('js-menu-clone-template');
+            target.appendChild(clone);
+
+            // Close menu when a link inside is clicked
+            target.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    headerMenu.classList.remove('is-active');
+                    document.documentElement.classList.remove('block-scroll');
+                });
+            });
+        }
+
+        // Tabs Logic (Existing)
         const tabButtons = document.querySelectorAll('.js-show-agencies');
         const categories = document.querySelectorAll('.js-agency-vertical');
 
         tabButtons.forEach(button => {
             button.addEventListener('click', function () {
                 const type = this.getAttribute('data-type');
-
-                // Update buttons
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
-
-                // Update categories
                 categories.forEach(cat => {
                     if (cat.getAttribute('data-type') === type) {
                         cat.classList.add('active');
